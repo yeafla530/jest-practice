@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import TodoList from './TodoList';
 import {server} from "../mocks/server"
 import {rest} from "msw"
-import { q } from 'msw/lib/glossary-de6278a9';
 
 describe('TodoList', () => { 
     test("Todo라는 제목이 있다", () => {
@@ -27,6 +26,8 @@ describe('TodoList', () => {
         expect(error).toBeInTheDocument()
 
     })
+
+    // handler.js 코드에 작성한 3개의 list가 나오게 됨
     test("리스트가 잘 나온다 (3개)", async () => {
         render(<TodoList/>)
         const list = await screen.findAllByRole("listitem")

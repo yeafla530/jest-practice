@@ -17,6 +17,8 @@ npm install --save-dev babel-jest @babel/core @babel/preset-env @babel/preset-re
 npm install --save-dev @babel/preset-typescript
 ```
 
+
+
 * babel.config.js
 
 ```
@@ -29,12 +31,16 @@ module.exports = {
 };
 ```
 
+
+
 * **typeChecking 기능 관련 모듈 설치**
   * `ts-jest`를 이용하여 typeChecking 기능을 사용하려면 jest configuration를 정의해주어야 한다.
 
 ```
 npm install --save-dev ts-jest
 ```
+
+
 
 * **Jest 관련 Type 정의 모듈 설치**
 
@@ -48,6 +54,8 @@ npm install --save-dev react-test-renderer
 -- jest-environment-jsdom
 npm install --save-dev jest-environment-jsdom
 ```
+
+
 
 * Jest's configuration 정의하기
   * React 에서 진행되는 Test 는 Node환경이 아닌 브라우저 환경에서도 Test 할 수 있어야 한다. 따라서 `package.json` 안에 `jest:{}` 필드를 삽입하거나, `jest.config.js`를 만들어서 테스트 환경을 `Node`로 할것인지 `jsdom`으로 할것인지 정의해야한다.
@@ -67,6 +75,8 @@ npm install --save-dev jest-environment-jsdom
 }
 ```
 
+
+
 * test scripts 정의
 
 ```json
@@ -78,11 +88,15 @@ npm install --save-dev jest-environment-jsdom
 }
 ```
 
+
+
 * @testing-library/react 설치
 
 ```
 npm install --save-dev @testing-library/react
 ```
+
+
 
 * download vscode "Jest" extension 
 
@@ -99,6 +113,8 @@ npm install --save-dev jest babel-jest @babel/core @babel/preset-env @babel/pres
 
 
 ## ✅ jest 기본 개념
+
+
 
 ### 기본 구조
 
@@ -171,6 +187,8 @@ it('calculates 1 + 2', () => {
 
 
 
+
+
 ### describe
 
 > 여러개의 테스트케이스를 묶을수 있음
@@ -216,6 +234,8 @@ describe('sum', ()=> {
 
 
 
+
+
 ## ✅TDD
 
 > Test Driven Development : 테스트 주도 개발
@@ -223,6 +243,8 @@ describe('sum', ()=> {
 <img src="images/wcbaeLC.png" alt="img" style="zoom: 25%;" />
 
 * 선 테스트코드 작성 후 구현
+
+
 
 
 
@@ -257,7 +279,9 @@ describe('sum', ()=> {
 
 
 
-## 예시
+
+
+## ✅ 예시
 
 `stats.ts`
 
@@ -319,7 +343,13 @@ describe('stats', () => {
 
 
 
+
+
+
+
 ## ✅ react-test-library
+
+
 
 ### 🔴 특징
 
@@ -328,6 +358,8 @@ describe('stats', () => {
 3. jest-dom을 이용해 DOM에 관련된 `matcher`를 추가해줌
 4. react 공식문서에서도 추천하는 testing방법
 5. react-test-library 모듈이 @testing-library/react로 옮겨짐
+
+
 
 
 
@@ -341,11 +373,15 @@ npm install @testing-library/any-framework
 
 
 
+
+
 ### 🔴 기본 문법: 찾기
 
-#### getBy : 하나의 요소만 가져올 수 있다
 
-* getByText(): text로 가져오기
+
+#### 👉getBy : 하나의 요소만 가져올 수 있다
+
+* **getByText(): text로 가져오기**
 
   * `/로그인 해주세요/` : 일부 text만 작성가능
   * `"로그인 해주세요"` : `""`로 작성할 경우 일부 text만 적으면 찾지 못함
@@ -358,9 +394,12 @@ npm install @testing-library/any-framework
   })
   ```
 
-  
 
-* getByRole(): HTML 요소로 가져오기
+
+
+
+
+* **getByRole(): HTML 요소로 가져오기**
 
   > 요소가 여러개일때는 못가져옴 
   >
@@ -421,9 +460,12 @@ npm install @testing-library/any-framework
   })
   ```
 
-  
 
-* getByAltText(): 이미지의 alt text가져오기
+
+
+
+
+* **getByAltText(): 이미지의 alt text가져오기**
 
   ```js
   test("로고 이미지가 잘 나온다", () => {
@@ -433,9 +475,12 @@ npm install @testing-library/any-framework
   })
   ```
 
-  
 
-* getByLabelText(): label의 text를 이용해 textbox를 찾아준다
+
+
+
+
+* **getByLabelText(): label의 text를 이용해 textbox를 찾아준다**
 
   ```jsx
    <div>
@@ -459,7 +504,9 @@ npm install @testing-library/any-framework
 
 
 
-* getByDisplayValue() : textbox의 value를 찾아줌
+
+
+* **getByDisplayValue() : textbox의 value를 찾아줌**
 
   ```jsx
   <div>
@@ -478,7 +525,9 @@ npm install @testing-library/any-framework
 
 
 
-* getByTextId(): 요소안의 data-testid의 값으로 찾아줌
+
+
+* **getByTextId(): 요소안의 data-testid의 값으로 찾아줌**
 
   ```jsx
   {/* 의미없는요소 */}
@@ -496,7 +545,9 @@ npm install @testing-library/any-framework
 
 
 
-#### getAllBy: DOM특정 모든 요소들 가져오기
+
+
+#### 👉 getAllBy: DOM특정 모든 요소들 가져오기
 
 > 매칭되는 요소들의 배열을 반환하고 일치하는게 없다면 에러가 난다
 
@@ -504,7 +555,7 @@ npm install @testing-library/any-framework
 
 
 
-* getByAllRole(listitem)
+* **getByAllRole(listitem)**
 
   * toHaveLength로 개수 체크 가능
   * 만약 빈 배열로 넘겨줬다면, li가 생성되지 않아 에러가 남
@@ -520,15 +571,17 @@ npm install @testing-library/any-framework
 
 
 
-#### queryBy / queryAllBy: 없는 요소 찾기에 적합
+
+
+#### 👉 queryBy / queryAllBy: 없는 요소 찾기에 적합
 
 > 요소가 없는 경우 에러를 반환하지 않고, null이나 빈배열을 반환한다 
 >
 > 없는 요소를 찾는 경우 적합하다
 
-* queryByRole / queryAllByRole
+* **queryByRole / queryAllByRole**
 
-  ```
+  ```js
   // null 반환
   test("queryByRole 빈 배열을 넘겨준 경우 요소에 없다", () => {
       render(<UserList users={[]}/>)
@@ -546,7 +599,9 @@ npm install @testing-library/any-framework
 
 
 
-#### findBy : Promise반환
+
+
+#### 👉 findBy : Promise반환
 
 > Promise를 반환, 찾는 요소가 있으면 resolve, 없으면 reject
 >
@@ -554,7 +609,7 @@ npm install @testing-library/any-framework
 
 
 
-* findByRole : 요소를 시간 안에 찾을 수 있는지 체크
+* **findByRole : 요소를 시간 안에 찾을 수 있는지 체크**
 
 ```jsx
 import {useState, useEffect} from "react"
@@ -595,6 +650,10 @@ test("잠시 후 제목이 나타난다", async () => {
 
 
 
+
+
+
+
 ### 🔴 기본 문법 : 유저 이벤트
 
 > package.json "@testing-library/user-event": "^13.5.0", 13버전은 더이상 지원 안함
@@ -608,7 +667,9 @@ npm install --save @testing-library/user-event
 
 
 
-* userEvent
+
+
+* **userEvent**
 
   * Promise를 반환하기 때문에 async, await 비동치 처리
 
@@ -671,17 +732,269 @@ npm install --save @testing-library/user-event
   })
   ```
 
-  
 
-### 🔴 에러 수정
 
-#### 문제1. debug 
+
+
+
+
+
+## ✅ MSW를 활용한 mock API 테스트
+
+### msw란?
+
+[msw 공식문서](https://mswjs.io/)
+
+[MSW를 활용하는 Front-End 통합테스트](https://fe-developers.kakaoent.com/2022/220825-msw-integration-testing/)
+
+> mock service worker의 약자
+>
+> MSW는 API 요청을 가로채서 사전에 설정해둔 목업 데이터를 넘겨주도록 설정해 주는 도구
+>
+> 마치 브라우저에서 마치 백엔드 API인척 하여 프론트엔드의 요청에 가짜 데이터를 응답해주는 서비스
+
+
+
+### 왜 msw를 사용하는가?
+
+테스트를 작성하다보면 더미 데이터를 만들거나 많은 API를 모킹해가며 테스트를 진행해야한다.
+
+그리고 이건 꽤 많은 비용을 발생시키는 작업이다.
+
+이런 문제를 해결하기 위해 MSW도구를 통합 테스트에 도입하여 활용할 수 있다.
+
+
+
+### msw 설치
+
+```bash
+npm install msw --save-dev
+```
+
+
+
+### 폴더구조
+
+```
+├── src
+│   ├── mocks
+│   │   ├── handlers.ts
+│   │   └── server.ts
+│   ├── setupTests.ts
+```
+
+
+
+### 순서
+
+1. TodoList.js 생성	
+2. TodoList.test.js 생성
+3. /mocks/server.js 생성
+4. /mocks/handlers.js 생성
+5. setupTests.js 코드 넣기
+6. TodoList.test.js 코드 수정
+
+
+
+### 1. TodoList.js 생성
+
+> `https://jsonplaceholder.typicode.com/todos` 에서 더미 데이터 가져와서 todoList에 저장
+
+```jsx
+import {useEffect, useState} from "react"
+import fetch from "node-fetch";
+
+export default function TodoList() {
+    const [todoList, setTodoList] = useState([])
+    const [errorMsg, setErrorMsg] = useState("")
+
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(res => res.json())
+            .then(json => {
+                setTodoList(json)
+            })
+            .catch(()=>{
+                setErrorMsg("에러 발생..")
+            })
+    }, [])
+
+    return( <>
+        <h1>Todo</h1>
+        {errorMsg ? <p>{errorMsg}</p> : (
+
+            <ul>
+                {todoList.map(todo => (
+                    <li 
+                    key={todo.id}
+                    style={{
+                        textDecoration: todo.completed ? "line-through" : undefined
+                    }}>
+                        {todo.title}
+                    </li>
+                ))}
+            </ul>
+        )}
+    </>)
+}
+```
+
+
+
+### 2. TodoList.test.js
+
+```js
+import { render, screen } from '@testing-library/react';
+import TodoList from './TodoList';
+import {server} from "../mocks/server"
+import {rest} from "msw"
+
+describe('TodoList', () => { 
+    test("Todo라는 제목이 있다", () => {
+        render(<TodoList/>)
+        const titleEl = screen.getByText("Todo")
+        expect(titleEl).toBeInTheDocument()
+    })
+})
+```
+
+
+
+### 3. /mock/server.js 생성
+
+> msw를 사용하기 위한 기본 설정
+
+```js
+import { setupServer } from 'msw/node'
+import {handlers} from "./handlers"
+
+export const server = setupServer(...handlers)
+```
+
+
+
+### 4. handlers.js 생성
+
+> 해당 파일에서 낚아챌 api 응답 설정
+
+```js
+import { rest } from 'msw'
+
+export const handlers = [
+  // Match a GET request to a third-party server.
+    rest.get('https://jsonplaceholder.typicode.com/todos', (req, res, ctx) => {
+        return res(
+            ctx.status(200), // 500
+            ctx.json([
+                {
+                    id: 1,
+                    title: '청소',
+                    completee: true
+                },
+                {
+                    id: 2,
+                    title: '설거지',
+                    completee: true
+                },
+                {
+                    id: 3,
+                    title: '숙제',
+                    completee: false
+                },
+            ])
+        )
+        
+    }),
+]
+```
+
+
+
+
+
+### 5. setupTests.js 코드 설정
+
+> server.js를 사용하여 mocking test 실시
+
+```js
+// src/setupTests.js
+import { server } from './mocks/server.js'
+// Establish API mocking before all tests.
+beforeAll(() => server.listen())
+
+// Reset any request handlers that we may add during the tests,
+// so they don't affect other tests.
+afterEach(() => server.resetHandlers())
+
+// Clean up after the tests are finished.
+afterAll(() => server.close())
+```
+
+
+
+
+
+### 6. TodoList.test.js 수정
+
+> msw를 이용한 코드 작성 및 강제로 에러가 나는 상황 테스트
+
+```js
+import { render, screen } from '@testing-library/react';
+import TodoList from './TodoList';
+import {server} from "../mocks/server"
+import {rest} from "msw"
+
+describe('TodoList', () => { 
+    test("Todo라는 제목이 있다", () => {
+        render(<TodoList/>)
+        const titleEl = screen.getByText("Todo")
+        expect(titleEl).toBeInTheDocument()
+    })
+
+    // 에러 설정한 test가 먼저나오더라도 
+    // 다음 test에 영향을 주지 않음
+    test("에러가 났을 때 에러 메세지를 보여준다", async () => {
+        server.use(
+            // Match a GET request to a third-party server.
+            rest.get('https://jsonplaceholder.typicode.com/todos', (req, res, ctx) => {
+                return res(
+                    ctx.status(500)
+                )
+            }),
+        )
+        render(<TodoList/>)
+        const error = await screen.findByText("에러 발생..")
+        expect(error).toBeInTheDocument()
+
+    })
+    
+    // handler.js 코드에 작성한 3개의 list가 나오게 됨
+    test("리스트가 잘 나온다 (3개)", async () => {
+        render(<TodoList/>)
+        const list = await screen.findAllByRole("listitem")
+        expect(list).toHaveLength(3)
+    })
+
+ })
+```
+
+
+
+###  
+
+## ✅에러 수정
+
+
+
+### 문제1. debug 
 
 * Unexpected debug statement
 
 ![image-20230712200516568](images/image-20230712200516568.png)
 
-#### 원인
+
+
+### 원인
 
 참고 자료: [no-debugging-utils](https://github.com/testing-library/eslint-plugin-testing-library/blob/main/docs/rules/no-debugging-utils.md)
 
@@ -709,19 +1022,23 @@ screen.debug();
 
 
 
-#### 문제2. toBeInTheDocument is not function
+
+
+
+
+### 문제2. toBeInTheDocument is not function
 
 *  expect(...).toBeInTheDocument is not function 에러 확인
 
 
 
-##### 원인
+### 원인
 
 jest관련 import 문 없음
 
 
 
-##### 해결방법
+### 해결방법
 
 > 루트 위치에 setUpTests.js 파일 생성하여 jest관련 설정을 중앙 집중화 시킨다
 
@@ -772,7 +1089,11 @@ jest관련 import 문 없음
 
 
 
-#### 문제3. userEvent act wrappered
+
+
+
+
+### 문제3. userEvent act wrappered
 
 ```bash
 console.error
@@ -786,14 +1107,16 @@ act(() => {
 
 
 
-##### 해결방법
+
+
+### 해결방법
 
 [참고자료](https://flyingsquirrel.medium.com/testing-library-react%EC%9D%98-act%EB%8A%94-%EC%96%B8%EC%A0%9C-%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C-c6036a8cd4b3)
 
-```
-what they don’t know is that render and fireEvent are already wrapped in act!
-사람들은 render와 fireEvent가 이미 act로 감싸져있다는걸 모릅니다!
-```
+> what they don’t know is that render and fireEvent are already wrapped in act!
+> 사람들은 render와 fireEvent가 이미 act로 감싸져있다는걸 모릅니다!
+
+
 
 * act()는 함수를 인자로 받는데, 이 함수를 실행시켜 가상의 DOM(jsdom)에 적용하는 역할을 한다
 
@@ -802,48 +1125,6 @@ what they don’t know is that render and fireEvent are already wrapped in act!
 * `userEvent.click` 같은 이벤트 함수들 `jsdom`에 반영되기 위해서 `testing-library/dom`의 `eventWrapper()` 메소드 함수가 호출되게 되는데, `testing-library/react` 는 `eventWrapper()`오버라이딩해서 콜백함수들(ex. `userEvent.click()`)가 `act()`함수로 감싸지도록 해놨습니다.
 
 * act는 중첩되게 호출될 수도 있지만, act를 사용하면 의도치 않은 동작이 일어날 수 있어 따로 추가하지 않아도 된다
-
-
-
-## ✅ MSW를 활용한 mock API 테스트
-
-### msw란?
-
-[msw 공식문서](https://mswjs.io/)
-
-> mock service worker의 약자
->
-> MSW는 API 요청을 가로채서 사전에 설정해둔 목업 데이터를 넘겨주도록 설정해 주는 도구
->
-> 마치 브라우저에서 마치 백엔드 API인척 하여 프론트엔드의 요청에 가짜 데이터를 응답해주는 서비스
-
-
-
-#### 왜 msw를 사용하는가?
-
-테스트를 작성하다보면 더미 데이터를 만들거나 많은 API를 모킹해가며 테스트를 진행해야한다.
-
-그리고 이건 꽤 많은 비용을 발생시키는 작업이다.
-
-이런 문제를 해결하기 위해 MSW도구를 통합 테스트에 도입하여 활용할 수 있다.
-
-
-
-#### msw 설치
-
-```bash
-npm install msw --save-dev
-```
-
-#### 폴더구조
-
-```
-├── src
-│   ├── mocks
-│   │   ├── handlers.ts
-│   │   └── server.ts
-│   ├── setupTests.ts
-```
 
 
 
